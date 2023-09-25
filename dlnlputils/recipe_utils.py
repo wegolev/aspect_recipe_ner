@@ -135,7 +135,8 @@ def plot_recipe_statistics(correct_recipes, total_recipes=None):
 
 def plot_confusion_matrix(y_true, y_pred, classes, normalize=False, title=None, cmap=plt.cm.Blues):
    
-    cm     = confusion_matrix(y_true, y_pred, classes)
+    # cm = confusion_matrix(y_true, y_pred, classes) # ошибка confusion_matrix() takes 2 positional arguments but 3 were given
+    cm = confusion_matrix(y_true, y_pred, labels=classes)
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
     
